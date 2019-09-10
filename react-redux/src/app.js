@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {BrowserRouter, Route} from 'react-router-dom'
+import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import 'normalize.css/normalize.css'
 import './styles/styles.scss'
 
@@ -28,14 +28,22 @@ const HelpPage = () => (
   </div>
 )
 
+const NotFoundPage = () => (
+  <div>
+    404
+  </div>
+)
+
+  // Switch lets us set up 404 fallback on non-specified routes
 const routes = (
   <BrowserRouter>
-    <div>
-    <Route exact path="/" component={ExpenseDashboardPage}/>
+    <Switch>
+    <Route path="/" exact component={ExpenseDashboardPage}/>
     <Route path="/create" component={AddExpensePage}/>
     <Route path="/edit" component={EditExpensePage}/>
-    <Route path="/help" component={HelpPage}/>        
-    </div>
+    <Route path="/help" component={HelpPage}/> 
+    <Route component={NotFoundPage}/>       
+    </Switch>
   </BrowserRouter>
 );
 
