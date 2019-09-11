@@ -23,4 +23,4 @@ const AppRouter = () => (
 );
   // Switch lets us set up 404 fallback on non-specified routes
 
-  export default AppRouter;
+  module.exports = AppRouter;
