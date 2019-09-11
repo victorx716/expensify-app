@@ -1,15 +1,41 @@
 import { createStore} from 'redux'
 
+// Action generators - fn that returns action objs (eventually broken out into own file)
+const incrementCount = ({ incrementBy = 1 } = {}) => ({
+  type: 'INCREMENT',
+  incrementBy
+});
+
+const decrementCount = ({decrementBy = 1} = {}) => ({
+  type: 'DECREMENT',
+  decrementBy
+});
+
+const setCount = ({count}) => ({
+  type: 'SET',
+  count
+});
+
+const resetCount = ({count = 0} = {}) => ({
+  type: 'RESET',
+  count
+})
+
+// create store
 const store = createStore((state = { count: 0 }, action) => {
   switch (action.type) {
     case 'INCREMENT':
       return {
-        count: state.count + 1
+        count: state.count + action.incrementBy
       };
     case 'DECREMENT':
       return {
-        count: state.count - 1
+        count: state.count - action.decrementBy
       };
+    case 'SET':
+      return {
+        count: action.count
+      }
     case 'RESET':
       return {
         count: 0
@@ -19,29 +45,18 @@ const store = createStore((state = { count: 0 }, action) => {
   }
 });
 
-// Action is {} that gets esnt to store
-// for example, walk, stop walking, sit work, stop working (these actions change the state of the store)
+// gets state every time it changes
+const unsubscribe = store.subscribe(() => {
+  console.log(store.getState())
+})
+// unsubscribe();
 
-// so in this counter example, we may have actions such as increment, decrement, reset (these change the store)
+store.dispatch(incrementCount({incrementBy: 5}));
+store.dispatch(incrementCount())
+store.dispatch(resetCount());
+store.dispatch(decrementCount({decrementBy: 10}));
+store.dispatch(setCount({count: 88}));
+store.dispatch(incrementCount());
+store.dispatch(incrementCount({incrementBy: 5}))
 
-// increment count
-
-store.dispatch({
-  type: 'INCREMENT'
-});
-
-store.dispatch({
-  type: 'INCREMENT'
-});
-
-store.dispatch({
-  type: 'RESET'
-});
-
-store.dispatch({
-  type: 'DECREMENT'
-});
-
-// decrement count
-
-console.log(store.getState());
+// 5 6 9 -10 88 89 94 :)
