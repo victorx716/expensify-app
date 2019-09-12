@@ -21,8 +21,7 @@ const resetCount = ({count = 0} = {}) => ({
   count
 })
 
-// create store
-const store = createStore((state = { count: 0 }, action) => {
+const countReducer = (state = { count: 0 }, action) => {
   switch (action.type) {
     case 'INCREMENT':
       return {
@@ -43,7 +42,9 @@ const store = createStore((state = { count: 0 }, action) => {
       default:
         return state;
   }
-});
+};
+// create store
+const store = createStore(countReducer);
 
 // gets state every time it changes
 const unsubscribe = store.subscribe(() => {
@@ -60,3 +61,5 @@ store.dispatch(incrementCount());
 store.dispatch(incrementCount({incrementBy: 5}))
 
 // 5 6 9 -10 88 89 94 :)
+
+

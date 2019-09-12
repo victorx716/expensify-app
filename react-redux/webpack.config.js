@@ -6,7 +6,7 @@ console.log(__dirname);
 
 module.exports = {
   // Customize start file and output file
-  entry: './src/playground/redux-101.js',
+  entry: './src/playground/redux-expensify.js',
   output: {
     path: path.join(__dirname, 'public'),
     filename: 'bundle.js'
