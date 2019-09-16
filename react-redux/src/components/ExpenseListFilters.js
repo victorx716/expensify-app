@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { DateRangePicker } from 'react-dates'
 import { setTextFilter, sortByDate, sortByAmount, setStartDate, setEndDate} from '../actions/filters'
+import uuid from 'uuid'
 
 class ExpenseListFilters extends React.Component {
   state = {
@@ -37,6 +38,8 @@ class ExpenseListFilters extends React.Component {
         </select>
         
         <DateRangePicker
+          startDateId = {uuid()}
+          endDateId = {uuid()}
           startDate = {this.props.filters.startDate}
           endDate = {this.props.filters.endDate}
           onDatesChange = {this.onDatesChange}
@@ -57,4 +60,5 @@ const mapStateToProps = (state) => {
   }
 }
 
+// hi 
 export default connect(mapStateToProps)(ExpenseListFilters);
