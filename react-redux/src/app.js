@@ -9,6 +9,8 @@ import './styles/styles.scss'
 import {setTextFilter} from './actions/filters'
 import {addExpense} from './actions/expenses'
 import getVisibleExpenses from './selectors/expenses'
+import 'react-dates/lib/css/_datepicker.css';
+import 'react-dates/initialize';
 
 const store = configureStore();
 
