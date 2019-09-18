@@ -43,8 +43,8 @@ test('should handle text change', () => {
   expect(setTextFilter).toHaveBeenLastCalledWith(value);
 });
 
-test('should sort by date', () => {
-  const value = 'date'
+test('should sort by amount', () => {
+  const value = 'amount'
   wrapper.find('select').simulate('change', {
     target: { value}
   })
@@ -61,6 +61,6 @@ test('should handle date changes', () => {
 
 test('should handle date focus changes', () => {
   const calendarFocused = 'endDate';
-  wrapper.find('DateRangePicker').prop('onFocusChange')(calendarFocused);
+  wrapper.find('withStyles(DateRangePicker)').prop('onFocusChange')(calendarFocused);
   expect(wrapper.state('calendarFocused')).toBe(calendarFocused);
 })
