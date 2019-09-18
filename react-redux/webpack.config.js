@@ -12,7 +12,7 @@ module.exports = (env) => {
     // Customize start file and output file
     entry: './src/app.js',
     output: {
-      path: path.join(__dirname, 'public'),
+      path: path.join(__dirname, 'public', 'dist'),
       filename: 'bundle.js'
     },
     // Customize webpack behavior on loading a specific file
@@ -36,7 +36,8 @@ module.exports = (env) => {
       // serves up bundle from memory
       // similiar to live-server, but with webpack specific config options
       contentBase: path.join(__dirname, 'public'),
-      historyApiFallback: true
+      historyApiFallback: true,
+      publicPath: '/dist/'
     }
   }
 }
