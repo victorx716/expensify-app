@@ -4,7 +4,7 @@ import { DateRangePicker } from 'react-dates'
 import { setTextFilter, sortByDate, sortByAmount, setStartDate, setEndDate} from '../actions/filters'
 import uuid from 'uuid'
 
-class ExpenseListFilters extends React.Component {
+export class ExpenseListFilters extends React.Component {
   state = {
     calendarFocused: null,
   };
@@ -18,14 +18,14 @@ class ExpenseListFilters extends React.Component {
   }
 
   onTextChange = (e) => { 
-    props.setTextFilter(e.target.value);
+    this.props.setTextFilter(e.target.value);
     }
   
   onSortChange = (e) => {
     if (e.target.value === 'date') {
-      props.sortByDate()
+      this.props.sortByDate()
     } else if (e.target.value === 'amount'){
-      props.sortByAmount()
+      this.props.sortByAmount()
     }
   }
   render() {
