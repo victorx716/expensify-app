@@ -12,6 +12,7 @@ import 'react-dates/lib/css/_datepicker.css';
 import 'react-dates/initialize';
 import './firebase/firebase'
 import './playground/promises'
+import LoginPage from './components/LoginPage'
 
 const store = configureStore();
 const jsx = (
@@ -20,8 +21,8 @@ const jsx = (
   </Provider>
 );
 
-ReactDOM.render(<p>Loading...</p>, document.getElementById('app'));
+// ReactDOM.render(<p>Loading...</p>, document.getElementById('app'));
 
 store.dispatch(startSetExpenses()).then(() => {
-  ReactDOM.render(jsx, document.getElementById('app'));
+  ReactDOM.render(<LoginPage />, document.getElementById('app'));
 })
