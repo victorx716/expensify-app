@@ -13,7 +13,7 @@ const AppRouter = () => (
     <div>
       <Header />              
         <Switch>
-          <Route path="/" exact component={LoginPage}/>
+          <Route path="/" exact={true} component={LoginPage}/>
           <Route path="/dashboard" component={ExpenseDashboardPage}/>
           <Route path="/create" component={AddExpensePage}/>
           <Route path="/edit/:id" component={EditExpensePage}/>
