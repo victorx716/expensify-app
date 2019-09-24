@@ -18,4 +18,4 @@ const mapDispatchToProps = (dispatch) => ({
   startLogout: () => dispatchEvent(startLogout())
 })
 
-export default connect(undefined, mapDispatchToProps)(Header);
+export default connect(mapDispatchToProps)(Header);
