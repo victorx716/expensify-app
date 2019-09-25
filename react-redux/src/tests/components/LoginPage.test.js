@@ -7,6 +7,25 @@ import {LoginPage} from '../../components/LoginPage'
    expect(wrapper).toMatchSnapshot();
  });
 
+ // Fails
+//  test('should call startLogin on button click', () => {
+//      const startLogin = jest.fn();
+//     // why this fails?
+//      const wrapper = shallow(<LoginPage startlogin={startLogin} />);
+
+//      wrapper.find('button').simulate('click');
+//      expect(startLogin).toHaveBeenCalled();
+//    });
+   
+// Succeeds   
+   test('should call startLogin on button click v2', () => {
+     const startLogin = jest.fn();
+
+     const wrapper = shallow(<LoginPage startLogin={startLogin} />);
+     
+     wrapper.find('button').simulate('click');
+     expect(startLogin).toHaveBeenCalled();
+   });
 
  // export const and import { component}
 
